@@ -1,0 +1,95 @@
+
+:root{
+
+    --yazitipi: Arial, Helvetica, sans-serif;
+}
+
+
+body{
+
+    height: 100vh;
+    background-color: gainsboro;
+}
+
+
+header{
+
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+header h1{
+
+    color: black;
+    font-size: 30px;
+    font-family: var(--yazitipi);
+}
+header img{
+
+
+    width: 100px;
+}
+
+
+.prompt{
+
+    font-family: var(--yazitipi);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.prompt textarea{
+
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 500px;
+    max-height: 150px;
+    font-family: var(--yazitipi);
+    font-size: 18px;
+    
+}
+
+.prompt button{
+
+    color: green;
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    background-color: transparent;
+    border:1px solid green;
+    font-size: 18px;
+    
+}
+
+.prompt button:hover{
+
+    color: white;
+    background-color: green;
+    transition: 0.4s;
+}
+
+
+.responseImg{
+
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.responseImg img{
+
+    width: 300px;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+}
