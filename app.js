@@ -3,7 +3,7 @@
 const btnGenerate = document.getElementById('btnGenerate')
 
 const input=document.getElementById('prompt')
-const apiKey = "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"
+const apiKey = "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"
 
 const girilenDeger = input.value
 
@@ -29,13 +29,15 @@ const getData=()=>{
         "size": "1024x1024"
       }),
     cache:'default'
+
+    
     }).then(res=>{
 
     return  res.json()
 
     }).then(data=>{
 
-        // console.log(data.data[0].url);
+        console.log(data);
 
         sendToDom(data)
 
