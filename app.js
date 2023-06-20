@@ -3,8 +3,12 @@
 const btnGenerate = document.getElementById('btnGenerate')
 
 const input=document.getElementById('prompt')
-// const apiKey = "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"
-const apiKey = "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"
+
+const apiKey = "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"
+const apiKey2 = "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"
+const apiKey3 = "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"
+
+
 
 const girilenDeger = input.value
 
