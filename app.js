@@ -3,7 +3,8 @@
 const btnGenerate = document.getElementById('btnGenerate')
 
 const input=document.getElementById('prompt')
-const apiKey = "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"
+// const apiKey = "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"
+const apiKey = "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"
 
 const girilenDeger = input.value
 
