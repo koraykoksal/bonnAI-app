@@ -4,9 +4,7 @@ const btnGenerate = document.getElementById('btnGenerate')
 
 const input=document.getElementById('prompt')
 
-const apiKey = "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"
-const apiKey2 = "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"
-const apiKey3 = "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"
+const apiKey = "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"
 
 
 
@@ -20,6 +18,7 @@ const params = {
 
 
 const getData=()=>{
+
 
     fetch(`https://api.openai.com/v1/images/generations`,{
 
@@ -36,16 +35,25 @@ const getData=()=>{
     cache:'default'
 
     
-    }).then(res=>{
+    }).then(res=>{  
+
+    
+    if(!res.ok){
+
+        throw new Error('Hata Var')
+    }
 
     return  res.json()
+    
 
     }).then(data=>{
 
-        console.log(data);
-
         sendToDom(data)
+        
 
+    }).catch(err=>{
+
+        console.log(err);
     })
 
 
@@ -70,7 +78,12 @@ btnGenerate.addEventListener('click',e => {
 
     e.preventDefault()
 
-    getData()
+    if(input.value){
+
+        getData()
+        
+    }
+    
 
 })
 

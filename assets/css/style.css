@@ -93,3 +93,12 @@ header img{
     padding: 5px;
     border-radius: 5px;
 }
+
+
+h3{
+    text-align: center;
+    color: green;
+    text-decoration: underline;
+    text-shadow: 1px 2px 5px;
+    display: none;
+}
