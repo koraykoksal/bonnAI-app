@@ -4,10 +4,6 @@ const btnGenerate = document.getElementById('btnGenerate')
 
 const input=document.getElementById('prompt')
 
-const apiKey = "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"
-
-
-
 const girilenDeger = input.value
 
 const params = {
@@ -17,47 +13,86 @@ const params = {
 };
 
 
-const getData=()=>{
 
-
-    fetch(`https://api.openai.com/v1/images/generations`,{
-
-    method:'post',
-    headers:{
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-        "prompt": input.value,
-        "n": 1,
-        "size": "1024x1024"
-      }),
-    cache:'default'
+const getApiKey= async ()=>{
 
     
-    }).then(res=>{  
+    fetch('https://6492f274428c3d2035d0f765.mockapi.io/openai_key', {
 
-    
-    if(!res.ok){
+    method: 'GET',
+    headers: {'content-type':'application/json'},
 
-        throw new Error('Hata Var')
+    }).then(res => {
+
+    if (!res.ok) {
+
+        throw new Error('Get Data Error')
     }
 
-    return  res.json()
-    
+    return res.json();
 
-    }).then(data=>{
+    }).then(tasks => {
 
-        sendToDom(data)
-        
+        const apiK=tasks[0].apiKey
+        getData(apiK)
 
-    }).catch(err=>{
+    }).catch(error => {
 
-        console.log(err);
+        writeError(error)
     })
 
 
 }
+
+
+const getData=(gelenData)=>{
+
+
+    if(gelenData){
+
+        fetch(`https://api.openai.com/v1/images/generations`,{
+
+        method:'post',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${gelenData}`
+        },
+        body: JSON.stringify({
+            "prompt": input.value,
+            "n": 1,
+            "size": "1024x1024"
+          }),
+        cache:'default'
+    
+        
+        }).then(res=>{  
+    
+        
+        if(!res.ok){
+    
+            throw new Error('Get Data Error')
+        }
+    
+        return  res.json()
+        
+    
+        }).then(data=>{
+    
+            sendToDom(data)
+            
+    
+        }).catch(err=>{
+    
+            writeError(err)
+    
+        })
+
+    }
+
+
+
+}
+
 
 
 
@@ -80,16 +115,26 @@ btnGenerate.addEventListener('click',e => {
 
     if(input.value){
 
+        getApiKey()
+
         getData()
-        
+
+
     }
-    
+
+
 
 })
 
 
 
+const writeError=(gelenHata)=>{
 
+    const resultError = document.getElementById('notification')
+
+    resultError.textContent = `${gelenHata}`
+
+}
 
 
 
