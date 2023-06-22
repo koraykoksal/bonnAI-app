@@ -4,7 +4,12 @@ const btnGenerate = document.getElementById('btnGenerate')
 
 const input=document.getElementById('prompt')
 
+const girilenData = document.querySelector('.prompt')
+
 const girilenDeger = input.value
+
+const notification = document.getElementById('modalNotification')
+
 
 const params = {
   "prompt": 'red car',
@@ -68,18 +73,23 @@ const getData=(gelenData)=>{
         }).then(res=>{  
     
         
-        if(!res.ok){
-    
-            throw new Error('Get Data Error')
-        }
-    
-        return  res.json()
+            if(!res.ok){
         
-    
+                throw new Error('Get Data Error')
+            }
+            else{
+
+
+                return  res.json()
+
+            }
+
         }).then(data=>{
     
+
             sendToDom(data)
-            
+
+            deger2()
     
         }).catch(err=>{
     
@@ -92,8 +102,6 @@ const getData=(gelenData)=>{
 
 
 }
-
-
 
 
 const sendToDom=(gelenData)=>{
@@ -115,6 +123,9 @@ btnGenerate.addEventListener('click',e => {
 
     if(input.value){
 
+        
+        deger1()
+  
         getApiKey()
 
         getData()
@@ -138,5 +149,19 @@ const writeError=(gelenHata)=>{
 
 
 
+const deger1 = ()=>{
+
+    girilenData.style.display="none"
+    notification.style.display="block"
+
+}
+
+const deger2 =()=>{
+
+
+    girilenData.style="display:block;display:flex;justify-content:center;align-items:center;gap:1rem;"
+    notification.style.display="none"
+
+}
 
 
