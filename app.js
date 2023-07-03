@@ -11,13 +11,6 @@ const girilenDeger = input.value
 const notification = document.getElementById('modalNotification')
 
 
-const params = {
-  "prompt": 'red car',
-  "n": 1,
-  "size": '1024x2034'
-};
-
-
 
 const getApiKey= async ()=>{
 
